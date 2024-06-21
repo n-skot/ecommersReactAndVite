@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import React from 'react'
 import Layout from '../../Components/Layout'
 import Card from '../../Components/Card'
 import ProductDetail from "../../Components/ProductDetail";
 
 function index() {
-  const [items, setItems] = useState(null)
+  const [items, setItems] = useState(null);
   
   useEffect(() => {
     fetch('https://api.escuelajs.co/api/v1/products')
@@ -18,7 +17,7 @@ function index() {
       Home
       <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
         {
-          items?.map((items) => (<Card key={items.id} category={items.category.name} price={items.price} name={items.title} image={items.images} />))
+          items?.map((items) => (<Card key={items.id} product={items.id} category={items.category.name} price={items.price} name={items.title} image={items.images} />))
         }
       </div>
       <ProductDetail />
