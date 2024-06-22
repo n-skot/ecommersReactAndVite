@@ -18,6 +18,10 @@ export const ProviderCart = ({ children }) => {
     const [productShow, setProductShow] = useState({});
 
     const [cartProducts, setCartProducts] = useState([]);
+
+    // My order
+    const [myOrder, setMyOrder] = useState([]);
+    
     return (
         <ContextCart.Provider value={{
             count,
@@ -31,7 +35,9 @@ export const ProviderCart = ({ children }) => {
             setCartProducts,
             openChekoutSideMenu,
             closeChekoutSideMenu,
-            isChekoutSideMenu
+            isChekoutSideMenu,
+            myOrder,
+            setMyOrder,
         }}>
             { children }
         </ContextCart.Provider>
