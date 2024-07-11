@@ -3,13 +3,8 @@ import { ContextCart } from "../../Context";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
 const OrderCard = props => {
-    const { productId, title, imageUrl, price } = props;
+    const { productId, title, imageUrl, price, handleDelete, quantity } = props;
     const context = useContext(ContextCart);
-
-    const handleDelete = (productId) => {
-        context.setCartProducts(context.cartProducts.filter(product => product.product!==productId))
-        context.setCount(context.count - 1);
-    };
 
     const onchangeQuantity = (event) => {
         const newQuantity = parseInt(event.target.value);
@@ -28,10 +23,15 @@ const OrderCard = props => {
             <div className="flex justify-between items-right gap-2">
                 <p className="text-lg font-medium">Price: {price}</p>
                 <label htmlFor="quantity">
-                    Quantity:
-                    <input type="number" id="quantity" name="quantity" defaultValue={1} min="1" className="w-10 text-center" onChange={(event) => onchangeQuantity(event)}></input>
+                    Quantity: {
+                        handleDelete ? <input type="number" id="quantity" name="quantity" defaultValue={1} min="1" className="w-10 text-center" onChange={(event) => onchangeQuantity(event)}></input>
+                        : <span>{quantity}</span>
+                    }
                 </label>
-                <TrashIcon className="h-6 w-6 text-black cursor-pointer" onClick={() => handleDelete(productId)} />
+                {
+                    handleDelete && 
+                    <TrashIcon className="h-6 w-6 text-black cursor-pointer" onClick={() => handleDelete(productId)} />
+                }
             </div>
         </div>
     )

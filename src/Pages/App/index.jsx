@@ -2,7 +2,6 @@ import { useRoutes, BrowserRouter } from 'react-router-dom'
 import { Navbar } from '../../Components/Navbar'
 
 import { ProviderCart } from '../../Context'
-import React from 'react'
 import Home from '../Home'
 import MyAccount from '../MyAccount'
 import MyOrder from '../MyOrder'
@@ -16,7 +15,9 @@ const AppRoutes = () => {
     { path: '/', element: <Home /> },
     { path: '/MyAccount', element: <MyAccount /> },
     { path: '/MyOrder', element: <MyOrder /> },
+    { path: '/MyOrder/last', element: <MyOrder /> },
     { path: '/MyOrders', element: <MyOrders /> },
+    { path: '/MyOrders/:id', element: <MyOrder /> },
     { path: '/*', element: <NotFound /> },
     { path: '/SingIn', element: <SingIn /> }
   ])
